@@ -1,8 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
-import {baseUrl} from '@/config/env'
+import {baseURL} from '@/config/env'
 
-axios.defaults.baseURL = baseUrl
+axios.defaults.baseURL = baseURL
 
 // http request 拦截器
 axios.interceptors.request.use(
@@ -17,13 +17,9 @@ axios.interceptors.request.use(
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
-    if (response.data.code !== 1000) {
-      alert(response.data.data)
-    }
     return response
   },
   error => {
-    alert('服务器错误')
     return Promise.reject(error.response.data)
   }
 )
