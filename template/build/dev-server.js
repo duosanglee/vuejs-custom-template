@@ -10,7 +10,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
-var webpackConfig = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing'
+var webpackConfig = {{#if_or unit e2e}}(process.env.NODE_ENV === 'testing' || process.env.NODE_ENV === 'production')
   ? require('./webpack.prod.conf')
   : {{/if_or}}require('./webpack.dev.conf')
 
@@ -31,7 +31,12 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
+<<<<<<< HEAD
   log: () => {}
+=======
+  log: false,
+  heartbeat: 2000
+>>>>>>> upstream/master
 })
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {

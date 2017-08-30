@@ -1,4 +1,5 @@
 var path = require('path')
+var fs = require('fs')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -24,8 +25,14 @@ module.exports = {
       {{#if_eq build "standalone"}}
       'vue$': 'vue/dist/vue.esm.js',
       {{/if_eq}}
+<<<<<<< HEAD
       '@': resolve('src')
     }
+=======
+      '@': resolve('src'),
+    },
+    symlinks: false
+>>>>>>> upstream/master
   },
   module: {
     rules: [
@@ -59,6 +66,17 @@ module.exports = {
         }
       },
       {
+<<<<<<< HEAD
+=======
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+        }
+      },
+      {
+>>>>>>> upstream/master
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
